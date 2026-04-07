@@ -752,6 +752,101 @@ summary:focus-visible {
   margin-top: 1rem;
 }
 
+.testi-carousel-wrap {
+  margin-top: 1.1rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: var(--shadow-soft);
+}
+
+.carousel-head h3 {
+  margin: 0;
+  color: var(--primary);
+  font-size: 1.05rem;
+}
+
+.carousel-head p {
+  margin: 0.3rem 0 0.8rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.image-carousel {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.carousel-track {
+  flex: 1;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(72%, 1fr);
+  gap: 0.65rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x;
+  padding-bottom: 0.25rem;
+  scrollbar-width: thin;
+}
+
+.carousel-track::-webkit-scrollbar {
+  height: 8px;
+}
+
+.carousel-track::-webkit-scrollbar-thumb {
+  background: #cfd6e1;
+  border-radius: 9999px;
+}
+
+.carousel-slide {
+  margin: 0;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  scroll-snap-align: start;
+  background: #fff;
+}
+
+.carousel-slide img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.carousel-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 9999px;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--primary);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-soft);
+  flex: 0 0 38px;
+}
+
+.carousel-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.carousel-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
 .faq-list {
   display: grid;
   gap: 0.75rem;
@@ -918,10 +1013,11 @@ summary:focus-visible {
   background: #fff;
 }
 
-.social-icons svg {
-  width: 18px;
-  height: 18px;
-  fill: var(--primary);
+.social-icons img {
+  width: 20px;
+  height: 20px;
+  border-radius: 0;
+  object-fit: contain;
 }
 
 .social-icons a:hover {
@@ -929,8 +1025,8 @@ summary:focus-visible {
   background: #fff2f5;
 }
 
-.social-icons a:hover svg {
-  fill: var(--accent);
+.social-icons a:hover img {
+  transform: scale(1.05);
 }
 
 .site-footer {
@@ -1178,6 +1274,14 @@ summary:focus-visible {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .carousel-track {
+    grid-auto-columns: minmax(45%, 1fr);
+  }
+
+  .carousel-btn {
+    display: inline-flex;
+  }
+
   .back-to-top {
     display: none !important;
   }
@@ -1321,6 +1425,10 @@ summary:focus-visible {
 
   .quote-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .carousel-track {
+    grid-auto-columns: minmax(31%, 1fr);
   }
 
   .car-grid {

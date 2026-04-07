@@ -1,5 +1,5 @@
-const WA_PHONE = "60139888198";
-const BASE_WA_TEXT = "Hi Mukhlis, saya nak tanya kereta Jetour dan nak check loan free";
+const WA_PHONE = "60197120077";
+const BASE_WA_TEXT = "Hi Abg Zand, saya nak tanya kereta Chery dan nak check loan free";
 
 const navbar = document.querySelector(".navbar");
 const menuBtn = document.querySelector("#mobile-menu-btn");
@@ -69,6 +69,39 @@ function setupBackToTop() {
   backToTopBtn.addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
+}
+
+function setupCustomerCarousel() {
+  const track = document.querySelector("[data-carousel-track]");
+  const prevBtn = document.querySelector("[data-carousel-prev]");
+  const nextBtn = document.querySelector("[data-carousel-next]");
+
+  if (!track || !prevBtn || !nextBtn) return;
+
+  const getStep = () => {
+    const slide = track.querySelector(".carousel-slide");
+    if (!slide) return track.clientWidth * 0.8;
+    const styles = window.getComputedStyle(track);
+    const gap = parseFloat(styles.columnGap || styles.gap || "0") || 0;
+    return slide.getBoundingClientRect().width + gap;
+  };
+
+  const scrollByStep = (direction) => {
+    track.scrollBy({ left: getStep() * direction, behavior: "smooth" });
+  };
+
+  const updateButtons = () => {
+    const maxScroll = track.scrollWidth - track.clientWidth;
+    prevBtn.disabled = track.scrollLeft <= 2;
+    nextBtn.disabled = track.scrollLeft >= maxScroll - 2;
+  };
+
+  prevBtn.addEventListener("click", () => scrollByStep(-1));
+  nextBtn.addEventListener("click", () => scrollByStep(1));
+  track.addEventListener("scroll", updateButtons, { passive: true });
+  window.addEventListener("resize", updateButtons);
+
+  updateButtons();
 }
 
 function setupLoanCalculator() {
@@ -160,4 +193,5 @@ window.addEventListener("load", handleScrollState);
 setupMobileNav();
 setupRevealOnScroll();
 setupBackToTop();
+setupCustomerCarousel();
 setupLoanCalculator();

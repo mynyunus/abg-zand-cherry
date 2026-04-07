@@ -1,6 +1,6 @@
-# Landing Page Jetour - Mukhlis Hadori
+# Landing Page Chery - Abg Zand
 
-Landing page statik (HTML/CSS/Vanilla JS) untuk lead WhatsApp dealer kereta Jetour.
+Landing page statik (HTML/CSS/Vanilla JS) untuk lead WhatsApp dealer kereta Chery.
 
 ## Struktur Fail
 
